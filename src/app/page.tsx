@@ -3,7 +3,8 @@ import DashboardLayout from '../components/layout/DashboardLayout';
 import StatCard from '../components/dashboard/StatCard';
 import { Users, DollarSign } from 'lucide-react';
 import ChartCard from '../components/dashboard/ChartCard';
-
+ import DataTable from '../components/dashboard/DataTable';
+       
 export default function Home() {
   return (
     <DashboardLayout>
@@ -16,6 +17,10 @@ export default function Home() {
         <StatCard title="إجمالي المستخدمين" value="1,234" icon={<Users size={20} />} />
         <StatCard title="المبيعات" value="$5,678" icon={<DollarSign size={20} />} />
         <ChartCard />
+        import DataTable from '../components/dashboard/DataTable';
+       return(
+ <DataTable />
+       )
       </div>
     </DashboardLayout>
   );
