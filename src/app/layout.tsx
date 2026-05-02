@@ -1,28 +1,32 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 
+// إعداد الخط
 const openSans = Open_Sans({
-  variable: "--font-open-sans",
   subsets: ["latin"],
+  variable: "--font-open-sans",
 });
 
+// إعدادات الميتا
 export const metadata: Metadata = {
   title: "O2 Dashboard Training",
   description: "Training dashboard for O2",
 };
 
-import  DashboardLayout  from "@/components/layout/DashboardLayout";
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${openSans.variable} h-full antialiased`}>
-      <body className="min-h-full">
-        <DashboardLayout>{children}</DashboardLayout>
+    <html lang="ar" dir="rtl">
+      <body className={openSans.className}>
+        {/* نقوم بتغليف المحتوى بالـ DashboardLayout هنا فقط */}
+        <DashboardLayout>
+          {children}
+        </DashboardLayout>
       </body>
     </html>
   );
