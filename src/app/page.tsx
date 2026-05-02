@@ -3,12 +3,11 @@ import DashboardLayout from '../components/layout/DashboardLayout';
 import StatCard from '../components/dashboard/StatCard';
 import { Users, DollarSign } from 'lucide-react';
 import ChartCard from '../components/dashboard/ChartCard';
- import DataTable from '../components/dashboard/DataTable';
-       
+import RefreshButton from '../components/dashboard/RefreshButton';
 export default function Home() {
   return (
     <DashboardLayout>
-      <div className="mb-8">
+      <div className="mb-8 flex justify-between items-center">
         <h1 className="text-2xl font-bold">لوحة التحكم</h1>
         <p className="text-gray-600">نظرة عامة على البيانات</p>
       </div>
