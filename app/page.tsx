@@ -5,7 +5,7 @@ export default function Home() {
     <div className="space-y-8">
       {/* Greeting Section */}
       <div>
-        <h1 className="text-2xl font-bold text-zinc-900">Welcome back, Mohammed</h1>
+        <h1 className="text-2xl font-bold text-zinc-900">Welcome back, Farah</h1>
         <p className="text-zinc-500">Here's what's happening with your projects today.</p>
       </div>
 
