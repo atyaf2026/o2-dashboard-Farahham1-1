@@ -1,63 +1,85 @@
 import StatCard from "@/components/dashboard/StatCard";
-import PerformanceChart from "@/components/dashboard/PerformanceChart";
-import { DollarSign, Users, Activity, Filter, Download } from "lucide-react";
+import SystemPerformanceChart from "@/components/dashboard/SystemPerformanceChart";
+import SystemHealth from "@/components/dashboard/SystemHealth";
+import UpcomingTasks from "@/components/dashboard/UpcomingTasks";
+import PerformanceoverTime from "@/components/dashboard/Performanceovertime";
 import RecentOrders from "@/components/dashboard/RecentOrders";
+import AssetDistribution from "@/components/dashboard/AssetDistribution";
+
+
+import { 
+  Activity, 
+  DollarSign, 
+  CheckCircle, 
+  TrendingUp 
+} from "lucide-react";
 
 export default function Page() {
-  // بيانات وهمية للرسم البياني الصغير داخل البطاقة
-  const barData = [40, 70, 45, 90, 55, 80, 60];
-
   return (
-    <div className="p-8 space-y-8 bg-gray-50 min-h-screen">
-      <h1 className="text-2xl font-bold text-gray-900">Welcome back, Farah</h1>
+   <main className="p-8 bg-gray-50 min-h-screen">
+  <div className="mb-6" dir="ltr">
+    <h1 className="text-2xl font-bold leading-tight text-slate-900">
+      Welcome back, Farah
+    </h1>
+    <p className="mt-1 text-sm text-slate-600">
+      Here is what's happening with your projects today.
+    </p>
+  </div>
+  
+<div
+  dir="ltr"
+  className="grid grid-cols-1 lg:grid-cols-[220px_220px_1fr] gap-6 items-stretch"
+>
 
-      {/* البطاقات العلوية */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* بطاقة System Performance المدمج بها الرسم البياني */}
-        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-          <div className="flex justify-between items-start mb-4">
-            <div>
-              <p className="text-sm text-gray-500">System Performance</p>
-              <h3 className="text-2xl font-bold mt-1">99.9%</h3>
-            </div>
-            <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
-              <Activity size={20} />
-            </div>
-          </div>
-          {/* الرسم البياني الصغير */}
-          <div className="flex items-end justify-between gap-1 h-12 w-full">
-            {barData.map((h, i) => (
-              <div key={i} className="w-full bg-indigo-500 rounded-t-sm" style={{ height: `${h}%` }} />
-            ))}
-          </div>
-        </div>
+  {/* TOTAL - LEFT */}
+  <div className="h-[140px]">
+    <StatCard 
+      title="Total Revenue"
+      value="$48,290.00"
+      mainIcon={DollarSign} 
+      badge="+12.18%"  
+      showProgress={true}
+      progressPercentage={60}
+    />
+  </div>
 
-        <StatCard title="Active Sessions" value="1,284" trend="42 users online now" icon={<Users size={20} />} />
-        <StatCard title="Total Revenue" value="$48,290.00" trend="+12% from last month" icon={<DollarSign size={20} />} />
-      </div>
+  {/* ACTIVE - CENTER */}
+  <div className="h-[140px]">
+    <StatCard 
+      title="Active Sessions"
+      value="1,284"
+      mainIcon={Activity} 
+      topRightIcon={CheckCircle}
+      topRightText="Active"
+      footerText="42 users online now"
+      footerIcon={TrendingUp}
+    />
+  </div>
 
-      {/* 2. الرسم البياني الرئيسي + الطلبات */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-          <h2 className="font-semibold mb-6">Performance Over Time</h2>
-          <PerformanceChart />
-        </div>
-        <div className="lg:col-span-1">
-          <RecentOrders />
-        </div>
-      </div>
+  {/* PERFORMANCE - RIGHT */}
+  <div className="h-[140px] ">
+    <SystemPerformanceChart />
+  </div>
+</div>
 
-      {/* 3. صحة النظام + المهام */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-          <h2 className="font-semibold mb-4">System Health</h2>
-          <p className="text-sm text-gray-400">Real-time status monitor</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-          <h2 className="font-semibold mb-4">Upcoming Tasks</h2>
-          <p className="text-sm text-gray-400">Deadlines & priorities</p>
-        </div>
-      </div>
-    </div>
+
+      {/* باقي محتوى الصفحة */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 mt-6" >
+
+  <SystemHealth />
+  <UpcomingTasks />
+  </div>
+ <div className="mt-6 grid grid-cols-[1.45fr_0.7fr] gap-6" dir="ltr">
+  <PerformanceoverTime />
+  <RecentOrders />
+{/* الكارد الأخير */}
+<div className="mt-6 w-full">
+   <AssetDistribution />
+</div>
+
+
+
+</div>
+    </main>
   );
 }

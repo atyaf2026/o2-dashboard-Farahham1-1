@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-
+import Sidebar from "@/components/layout/Sidebar";
 // إعداد الخط
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -15,18 +15,14 @@ export const metadata: Metadata = {
   description: "Training dashboard for O2",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl">
-      <body className={openSans.className}>
-        {/* نقوم بتغليف المحتوى بالـ DashboardLayout هنا فقط */}
-        <DashboardLayout>
+    <html lang="en" dir="ltr"> {/* تأكدي أن الاتجاه ltr هنا */}
+      <body className="flex min-h-screen">
+        <Sidebar /> {/* السايدبار سيظهر تلقائياً على اليسار */}
+        <main className="flex-1 bg-gray-50">
           {children}
-        </DashboardLayout>
+        </main>
       </body>
     </html>
   );
