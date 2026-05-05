@@ -9,6 +9,7 @@ type Props = {
   badge?: string;
   footerText?: string;
   footerIcon?: LucideIcon;
+  isWide?: boolean;
   showProgress?: boolean;
   progressPercentage?: number;
 };

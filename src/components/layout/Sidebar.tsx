@@ -1,3 +1,7 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   House,
   BarChart2,
@@ -8,54 +12,57 @@ import {
   LogOut,
 } from "lucide-react";
 
+const mainLinks = [
+  { label: "Home", href: "/", icon: House },
+  { label: "Analytics", href: "/analytics", icon: BarChart2 },
+  { label: "Users", href: "/users", icon: Users },
+  { label: "Reports", href: "/reports", icon: FileText },
+  { label: "Settings", href: "/settings", icon: Settings },
+];
+
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside
       dir="ltr"
-      // قمنا بإزالة fixed ووضعنا flex-shrink-0 لضمان ثبات العرض
       className="sticky top-0 z-50 hidden h-screen w-[220px] flex-shrink-0 flex-col border-r border-gray-200 bg-white md:flex"
     >
-      <div className="px-5 pt-7 pb-8 text-lg font-bold text-indigo-600">
+      <div className="px-5 pb-8 pt-7 text-lg font-bold text-indigo-600">
         O2 Dashboard
       </div>
 
-      <nav className="flex-1 px-3 space-y-2">
-        <div className="flex h-11 items-center justify-between rounded-xl bg-indigo-50 px-4 text-sm font-medium text-indigo-600">
-          <span>Home</span>
-          <House size={18} />
-        </div>
+      <nav className="flex-1 space-y-2 px-3">
+        {mainLinks.map(({ label, href, icon: Icon }) => {
+          const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
 
-        <div className="flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600">
-          <span>Analytics</span>
-          <BarChart2 size={18} />
-        </div>
-
-        <div className="flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600">
-          <span>Users</span>
-          <Users size={18} />
-        </div>
-
-        <div className="flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600">
-          <span>Reports</span>
-          <FileText size={18} />
-        </div>
-
-        <div className="flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600">
-          <span>Settings</span>
-          <Settings size={18} />
-        </div>
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium transition ${
+                isActive
+                  ? "bg-indigo-50 text-indigo-600"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+              }`}
+            >
+              <span>{label}</span>
+              <Icon size={18} />
+            </Link>
+          );
+        })}
       </nav>
 
-      <div className="border-t border-gray-200 px-3 pt-4 pb-5">
-        <div className="flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600">
+      <div className="border-t border-gray-200 px-3 pb-5 pt-4">
+        <button className="flex h-11 w-full items-center justify-between rounded-xl px-4 text-sm font-medium text-slate-600 transition hover:bg-slate-50" type="button">
           <span>Support</span>
           <LifeBuoy size={18} />
-        </div>
+        </button>
 
-        <div className="mt-2 flex h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-red-600">
+        <button className="mt-2 flex h-11 w-full items-center justify-between rounded-xl px-4 text-sm font-medium text-red-600 transition hover:bg-red-50" type="button">
           <span>Logout</span>
           <LogOut size={18} />
-        </div>
+        </button>
 
         <div className="mt-5 flex h-[64px] items-center gap-2 rounded-xl border border-gray-100 bg-slate-50 px-3">
           <div className="min-w-0 flex-1">
