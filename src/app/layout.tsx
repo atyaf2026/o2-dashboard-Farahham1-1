@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr"> {/* تأكدي أن الاتجاه ltr هنا */}
+    <html lang="en" dir="ltr"> 
       <body className="flex min-h-screen">
         <Sidebar /> {/* السايدبار سيظهر تلقائياً على اليسار */}
         <main className="flex-1 bg-gray-50">
