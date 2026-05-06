@@ -9,7 +9,6 @@ type Props = {
   badge?: string;
   footerText?: string;
   footerIcon?: LucideIcon;
-  isWide?: boolean;
   showProgress?: boolean;
   progressPercentage?: number;
 };
@@ -33,6 +32,7 @@ export default function StatCard({
       className={`text-left bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between h-full ${
         isWide ? 'col-span-2' : ''
       }`}
+      
       style={{ minHeight: '100px' }} // تصغير الارتفاع
     >
       

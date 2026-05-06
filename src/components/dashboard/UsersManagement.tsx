@@ -7,7 +7,7 @@ import {
   Filter,
   GraduationCap,
   Plus,
-  Search,
+  Search, 
   ShieldCheck,
   Trash2,
 } from "lucide-react";
@@ -19,7 +19,7 @@ const stats = [
   { title: "PENDING INVITES", value: "18" },
   { title: "NEW TRAINEES", value: "54" },
 ];
-
+ 
 const users = [
   {
     name: "Alex Rivera",
